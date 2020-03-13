@@ -4,7 +4,9 @@
  * 
  *  User CONTROLLER
  * 
- *  Created with: php artisan make:Controller UserController  
+ *  Created with: php artisan make:Controller UserController
+ *  DB Connect file: .env  
+ *  Connected with: php artisan migrate
  * 
  */
 
@@ -37,7 +39,7 @@ class UserController extends Controller
 
         // Return listUser.blade.php for VIEW
         return view("listUser", [
-            "user" => $user
+            "user" => $user     // The $user em blade file references this $user
         ]);
     }
 }
