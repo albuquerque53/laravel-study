@@ -4,3 +4,4 @@
 ## Directories
 * /001 - Laravel Install
 * /002 - Understanding MVC in Laravel
+* /003 - Working with routes to write a CRUD
