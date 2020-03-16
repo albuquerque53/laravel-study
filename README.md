@@ -5,3 +5,4 @@
 * /001 - Laravel Install
 * /002 - Understanding MVC in Laravel
 * /003 - Working with routes to write a CRUD
+* /004 - Automate with artisan (controller) and resource (routes)
