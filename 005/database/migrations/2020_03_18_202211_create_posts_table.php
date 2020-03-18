@@ -20,7 +20,7 @@ class CreatePostsTable extends Migration
             $table->string('slug');
             $table->text('content');
             $table->timestamps();
-
+            // Foreign Key
             $table->foreign('author')->references('id')->on('users')->onDelete('CASCADE');
         });
     }
