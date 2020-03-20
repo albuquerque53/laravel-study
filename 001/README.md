@@ -4,11 +4,12 @@
 
 This folder is just a result of a laravel install
 
+## Install using composer create project
 
-#### Install using composer create project:
 ```composer create-project --prefer-dist laravel/laravel <project_name>```
 
-#### Install using composer install:
+## Install using composer install
+
 ```composer global require laravel/installer```
 
 [-> Check the Docs <-](https://laravel.com/docs/7.x#installing-laravel)
