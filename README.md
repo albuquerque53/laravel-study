@@ -10,3 +10,4 @@
 * 004/ - Automate with artisan (controller) and resource (routes)
 * 005/ - Migrations create and rollback
 * 006/ - Models and Business Rules
+* 007/ - Working with blade
