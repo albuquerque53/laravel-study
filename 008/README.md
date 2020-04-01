@@ -17,7 +17,7 @@
 
 1. Create a your files estructure (.html, .js, .css)
 2. Create your page, script and style
-3. Run ```npm install``` to install laravel-mix dependencie
+3. Run ```npm install``` to install laravel-mix dependence
 4. Go to webpack.mix.js file and edit:
 ```
 mix
