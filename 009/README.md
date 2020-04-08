@@ -35,6 +35,7 @@
     .sass('resources/views/scss/style.scss', 'public/site/style.css')
 ```
 [Take a look in my webpack.mix.js](https://github.com/g4br-4d3v/laravel-study/tree/master/009/webpack.mix.js)
+
 7. Load all .js, .css files to /public with webpack:
 ```
     npm run dev
@@ -50,7 +51,7 @@
 <!-- Bootstrap JS -->
 <script src="{{ asset('site/bootstrap.js') }}"></script>
 ```
-[Take a look in my home.blade.php](https://github.com/g4br-4d3v/laravel-study/tree/master/009resources/views/home.blade.php)
+[Take a look in my home.blade.php](https://github.com/g4br-4d3v/laravel-study/blob/master/009/resources/views/home.blade.php)
 
 ### Finish
 After that, you'll can use bootstrap in you Laravel application in the right way being able to use all the resources of this framework, like theming, for example.
