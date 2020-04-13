@@ -1,78 +1,162 @@
-<p align="center"><img src="https://res.cloudinary.com/dtfbvvkyp/image/upload/v1566331377/laravel-logolockup-cmyk-red.svg" width="400"></p>
+![](https://camo.githubusercontent.com/c4b3056564d4d97f40afa08cffefa26c2a695316/68747470733a2f2f7265732e636c6f7564696e6172792e636f6d2f6474666276766b79702f696d6167652f75706c6f61642f76313536363333313337372f6c61726176656c2d6c6f676f6c6f636b75702d636d796b2d7265642e737667)
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# 003 - Rest verbalization and Dependence Injection
 
-## About Laravel
+> On backend, is vital that the system manage (with security) all inputs and requests to database.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Verbs
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* Get: Get is used to GET things (like a html page, contents, etc)
+* Post: This is used to send things to server (html form, url params, json body, etc)
+* Put/Patch: Are used to edit things that are already saved
+* Delete: Is used to delete things that are already saved too.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+#### Where the verbs are used?
 
-## Learning Laravel
+Usually, in Laravel, in the ```routes/*.php```. In this case, I use the web.php where are the main routes.
+The sintax to create a route is: ```Route::verb('uri', controller@method);```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+> All the methods of the routes are in Controllers
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Index method
+The Index method has the task of Get all fields in the database.
 
-## Laravel Sponsors
+**web.php**:
+```
+Route::get('/all', Controller@index)->name('getall');
+```
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+**app/Http/Controllers/Controller**:
+```
+// Model require
+use \App\Model;
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
-- [Appoly](https://www.appoly.co.uk)
-- [OP.GG](https://op.gg)
+// The same name that is in the route
+public function index()
+{
+    // Model method 'all' will send 'SELECT * FROM table' to database
+    $all = Model::all();
 
-## Contributing
+    // Return all field
+    return $all;
+}
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Show method
+The method Show has the task to Get a specific information.
 
-## Code of Conduct
+**web.php**:
+```
+// When the user access 'yourproj.com/users/<id/field>'
+Route::get('/users/{field}', Controller@show)->name('getone');
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+**app/Http/Controllers/Controller**:
+```
+\\ Model 'Field' require
+use \App\Field;
 
-## Security Vulnerabilities
+public function show(Field $field)
+{
+    /* The $field already is what you're looking for according with you URL Param
+       If you want to check:  
+        dd($field)
+    */
+    
+    // Return the specified field
+    return $field
+}
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+## Store
+The method Store will save data in db.
 
-## License
+**web.php**:
+```
+Route::post('/new', Controller@store)->name('store');
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**app/Http/Controllers/Controller**:
+```
+\\ Model 'Field' require
+use \App\Field;
+\\ Request require
+use Illuminate\Http\Request;
+
+public function store(Request $request)
+{
+    // Instance new field
+    $field = new Field;
+    
+    // Add the value according to request
+    $field->value1 = $request->value1;
+    $field->value2 = $request->value2;
+    $field->value3 = $request->value3;
+    
+    // Save the field
+    $field->save();
+}
+```
+
+## Update
+The update will update (yes, I swear) the specified field.
+
+**web.php**:
+```
+// When the user access 'yourproj.com/users/<id/field>'
+Route::put('/edit/{field}', Controller@update)->name('edit');
+```
+
+**app/Http/Controllers/Controller**:
+```
+\\ Model 'Field' require
+use \App\Field;
+\\ Request require
+use Illuminate\Http\Request;
+
+public function update(Field $field, Request $request)
+{
+    // Like the show route, the $field already is setted
+    // dd($field);
+    
+    // Update the field values to request values
+    $field->value1 = $request->value1;
+    $field->value2 = $request->value2;
+    $field->value3 = $request->value3;
+    
+    // Save the changes
+    $field->save();
+}
+```
+
+## Destroy
+The destroy will delete (yes, again, I swear) the specified field.
+
+**web.php**:
+```
+// When the user access 'yourproj.com/users/<id/field>'
+Route::delete('/destroy/{field}', Controller@destroy)->name('delete');
+```
+
+**app/Http/Controllers/Controller**:
+```
+\\ Model 'Field' require
+use \App\Field;
+
+public function destroy(Field $field)
+{
+    // Like the show and update routes, the $field already is setted
+    // dd($field);
+    
+    // Delete method will destroy the field
+    $field->delete();
+}
+```
+
+### Take a Look in my routes and controller file:
+* [web.php](https://github.com/g4br-4d3v/laravel-study/blob/master/003/routes/web.php)
+* [TestController.php](https://github.com/g4br-4d3v/laravel-study/blob/master/003/app/Http/Controllers/Form/TestController.php)
+
+## Check the Docs:
+* [Laravel - Verbs and Routing](https://laravel.com/docs/7.x/routing#basic-routing)
+* [Laravel - Dependency Injection](https://laravel.com/docs/7.x/controllers#dependency-injection-and-controllers)
