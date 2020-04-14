@@ -27,7 +27,7 @@ php artisan make:Controller <ControllerName> --resource --model=<Model>
 
 > In this case, the dependency injection are automatically applied to your specified Model.
 
-[-> Check the Docs <-](https://laravel.com/docs/7.x/structure)
+[My UserController.php](https://github.com/g4br-4d3v/laravel-study/blob/master/004/app/Http/Controllers/Form/UserController.php)
 
 ### "Resourcing" the routes
 
@@ -37,6 +37,8 @@ Using the 'resource' static method, automatically, all routes are created accord
 // This is the web.php, check the routes with: php artisan routes:list
 Route::resource('/', '<YourControllerHere>');
 ```
+
+[My web.php](https://github.com/g4br-4d3v/laravel-study/blob/master/004/routes/web.php)
 
 ### Changing the defaults 'uris' of resource
 
@@ -54,6 +56,9 @@ public function boot()
     ]);
 }
 ```
+
+[My AppServiceProvider](https://github.com/g4br-4d3v/laravel-study/blob/master/004/app/Providers/AppServiceProvider.php)
+
 ### Check the Docs
 * [Artisan Resource](https://laravel.com/docs/7.x/controllers#resource-controllers)
 * [Change Resource URIs](https://laravel.com/docs/7.x/controllers#restful-localizing-resource-uris)
