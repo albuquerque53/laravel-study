@@ -14,6 +14,6 @@ Where are the MVC files/folders in Laravel structure
 
 ## Create controllers with artisan
 
-```php artsian make::Controller <ControllerName>```
+```php artsian make:Controller <ControllerName>```
 
 [-> Check the Docs <-](https://laravel.com/docs/7.x/structure)
