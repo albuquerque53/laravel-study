@@ -15,7 +15,7 @@ php artsian make::Controller <ControllerName>
 
 2. Controller with database methods:
 ```
-php artsian make::Controller <ControllerName> --resource
+php artsian make:Controller <ControllerName> --resource
 ```
 
 > With the flag '--resource', the methods like store, update, and others are already created in Controller.
