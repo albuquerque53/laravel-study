@@ -7,8 +7,8 @@ Uploading files and saving them into database
 
 ## Config files
 
-* filesystems.php: This will set where the uploads where save locally
-* env: Depending on your config in filesystems, you'll need set the FILESYSTEM_DRIVER variable here
+* [filesystems.php](https://github.com/g4br-4d3v/laravel-study/blob/master/010/config/filesystems.php): This will set where the uploads where save locally
+* [.env](https://github.com/g4br-4d3v/laravel-study/blob/master/010/.env.example): Depending on your config in filesystems, you'll need set the FILESYSTEM_DRIVER variable here
 
 ## Migrations Models and Controllers
 
@@ -24,7 +24,7 @@ php artisan make:migration create_<table_name>_table
 php artisan make:model <YourModel>
 ```
 
-* Controller create = :
+* Controller create:
 
 ```
 php artisan make:controller <YourController> --resource --model=<YourModel>
