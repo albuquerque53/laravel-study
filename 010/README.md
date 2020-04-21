@@ -4,13 +4,6 @@
 
 Uploading files and saving them into database
 
-## Directories
-
-| Directory             | MVC         |
-|-----------------------|-------------|
-| app/                  | Models      |
-| resources/views/      | Views       |
-| app/Http/Controllers/ | Controllers |
 
 ## Config files
 
@@ -54,5 +47,5 @@ $model->save();
 
 #### Check the Docs
 
-*[Laravel: Files Upload](https://laravel.com/docs/7.x/requests#files)
-*[Laravel: Relationship](https://laravel.com/docs/7.x/eloquent-relationships)
+* [Laravel: Files Upload](https://laravel.com/docs/7.x/requests#files)
+* [Laravel: Relationship](https://laravel.com/docs/7.x/eloquent-relationships)
