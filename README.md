@@ -20,3 +20,4 @@ This repository is my 'online notebook' with matters divided into directories so
 * [008/](https://github.com/g4br-4d3v/laravel-study/tree/master/008) - Assets and Laravel-Mix
 * [009/](https://github.com/g4br-4d3v/laravel-study/tree/master/009) - Bootstrap in Laravel
 * [010/](https://github.com/g4br-4d3v/laravel-study/tree/master/010) - Files Upload
+* [011/](https://github.com/g4br-4d3v/laravel-study/tree/master/011) - Authentication
