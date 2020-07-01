@@ -8,7 +8,7 @@ Automating with Artisan
 
 1. Simple Controller:
 ```
-php artsian make::Controller <ControllerName>
+php artsian make:Controller <ControllerName>
 ```
 
 > Will create a Controller file in app/Http/Controllers/
