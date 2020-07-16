@@ -22,8 +22,9 @@ php artisan make:controller PostController
 php artisan migration
 ```
 
-### There are two ways to write data in database
-1. The 'manual' way:
+### There are some ways to write data in database
+
+1. The 'Property-Based' way:
 * Controller:
 ```
 Model->attribute1 = Request->attribute1;
@@ -31,19 +32,21 @@ Model->attribute2 = Request->attribute2;
 Model->save();
 ```
 
-2. The 'fillable' way:
+2. The 'Mass-Assingment' way:
+
+* In Model:
+```
+// This fillable must accept the mass assignment from controller
+protected $fillable = ['attribute1', 'attribute2'];
+```
+
 * In Controller: 
 ```
 // The '_token' must be ignored
 Model->create(Request->except['_token']);
 ```
-* In Model:
-```
-// attribute must be equal to Request attribute
-protected $fillable = ['attribute1', 'attribute2'];
-```
 
-> The 'fillable way' may be used when you have too many attributes
+> The 'Mass-assignment way' may be used when you have too many attributes
 
 ### (extra) Automatic Model/Migration/Controller create
 ```
