@@ -70,13 +70,15 @@ php artisan migrate:refresh --seed
 If your need multiple random information in your DB, you'll love this
 
 1. Create the Factory into database/factories/<Table>Factory
+    
 ```
 php artisan make:factory <Table>Factory --model=<ModelName>
+
+# The define method will receive a TableModel instance and a callback function that will return the data to insert in DB
 ```
 
-> The define method will receive a TableModel instance and a callback function that will return the data to insert in DB
-
 2. Set the random/fake data rows
+
 ```
 $factory->define(<TableModel>::class, function (Faker $faker) {
     return [
@@ -97,8 +99,8 @@ $factory->define(<TableModel>::class, function (Faker $faker) {
 });
 
 // Faker Methods: https://github.com/fzaninotto/Faker/blob/master/readme.md
-// 
 ```
+
 Take a look in my [Factory](https://github.com/albuquerque53/laravel-study/blob/master/013/database/factories/UserFactory.php)
 
 3. Your Factory is ready, now you need to define into your seed:
@@ -108,9 +110,9 @@ public function run()
 {
     factory(App\<TableModel>::class, <number of rows to insert>)->create();
 }
-
 // 
 ```
+
 Take a look in my [Seed](https://github.com/albuquerque53/laravel-study/blob/master/013/database/seeds/UsersTableSeeder.php)
 
 4. Finally, run:
@@ -119,6 +121,6 @@ php artisan migrate:refresh --seed
 ```
 
 ### :page_facing_up: Check the Docs!
-[Migration](https://laravel.com/docs/7.x/migrations#rolling-back-migrations)
-[Seed](https://laravel.com/docs/7.x/seeding)
-[Factory](https://laravel.com/docs/7.x/seeding#using-model-factories)
+* [Migration](https://laravel.com/docs/7.x/migrations#rolling-back-migrations)
+* [Seed](https://laravel.com/docs/7.x/seeding)
+* [Factory](https://laravel.com/docs/7.x/seeding#using-model-factories)
