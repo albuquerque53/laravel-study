@@ -29,7 +29,6 @@ public function run()
 }
 ```
 3. Now you'll use the Str resource to generate random informations
-
 ```
 Use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -50,7 +49,6 @@ public function run()
 ```
 
 4. Your seed is ready, but you also need configure the Database Seeder
-
 ```
 public function run()
 {
@@ -60,7 +58,6 @@ public function run()
 ```
 
 5. Now, to reset your database & insert the seed data run:
-
 ```
 php artisan migrate:refresh --seed
 ```
@@ -69,17 +66,16 @@ php artisan migrate:refresh --seed
 
 If your need multiple random information in your DB, you'll love this
 
-1. Create the Factory into database/factories/<Table>Factory
-    
+1. Create the Factory 
 ```
 php artisan make:factory <Table>Factory --model=<ModelName>
-
-# The define method will receive a TableModel instance and a callback function that will return the data to insert in DB
 ```
 
 2. Set the random/fake data rows
 
 ```
+// database/factories/<Table>Factory
+
 $factory->define(<TableModel>::class, function (Faker $faker) {
     return [
     
