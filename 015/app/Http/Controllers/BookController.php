@@ -28,15 +28,16 @@ class BookController extends Controller
     /**
      * @return \Illuminate\Http\Response
      */
-    public function show(Book $book)
+    public function show(int $bookId)
     {
-        return json_encode($book);
-    }
-
-    private function checkBooks(Collection $book)
-    {
-        if ($book->empty()) {
-            return false;
+        $book = Book::find($bookId);
+        
+        if (!$book) {
+            return json_encode([
+                'message' => 'Book not found :/'
+            ]);
         }
+
+        return json_encode($book);
     }
 }
